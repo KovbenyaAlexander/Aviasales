@@ -5,6 +5,7 @@ import {
   FILTER_ONE_TRANSFER,
   FILTER_TWO_TRANSFER,
   FILTER_THREE_TRANSFER,
+  SWITCH_SORT,
 } from "./actionsTypes";
 
 export function set_data(data) {
@@ -13,28 +14,39 @@ export function set_data(data) {
     payload: data,
   };
 }
+
 export function filter_all() {
   return {
     type: FILTER_ALL,
   };
 }
+
 export function filter_without_transfer() {
   return {
     type: FILTER_WITHOUT_TRANSFER,
   };
 }
+
 export function filter_one_transfer() {
   return {
     type: FILTER_ONE_TRANSFER,
   };
 }
+
 export function filter_two_transfer() {
   return {
     type: FILTER_TWO_TRANSFER,
   };
 }
+
 export function filter_three_transfer() {
   return {
     type: FILTER_THREE_TRANSFER,
+  };
+}
+
+export function switch_sort() {
+  return {
+    type: SWITCH_SORT,
   };
 }

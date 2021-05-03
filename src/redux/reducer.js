@@ -5,6 +5,7 @@ import {
   FILTER_ONE_TRANSFER,
   FILTER_TWO_TRANSFER,
   FILTER_THREE_TRANSFER,
+  SWITCH_SORT,
 } from "./actions/actionsTypes";
 
 const initialState = {
@@ -13,10 +14,11 @@ const initialState = {
   filter_one_transfer_checked: false,
   filter_two_transfer_checked: false,
   filter_three_transfer_checked: false,
+  is_sort_by_cheapest: true,
 };
 
 export default function reducer(state = initialState, action) {
-  console.log(action);
+  // console.log(action);
 
   switch (action.type) {
     case SET_DATA:
@@ -49,8 +51,14 @@ export default function reducer(state = initialState, action) {
         ...state,
         filter_three_transfer_checked: !state.filter_three_transfer_checked,
       };
-
+    case SWITCH_SORT:
+      return {
+        ...state,
+        is_sort_by_cheapest: !state.is_sort_by_cheapest,
+      };
     default:
       break;
   }
+
+  return state;
 }
