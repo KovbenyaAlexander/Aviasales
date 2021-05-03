@@ -6,15 +6,18 @@ import {
   FILTER_TWO_TRANSFER,
   FILTER_THREE_TRANSFER,
   SWITCH_SORT,
+  SHOW_ADDITIONAL_CARDS,
 } from "./actions/actionsTypes";
 
 const initialState = {
+  data: null,
   filter_all_checked: false,
   filter_without_transfer_checked: false,
   filter_one_transfer_checked: false,
   filter_two_transfer_checked: false,
   filter_three_transfer_checked: false,
   is_sort_by_cheapest: true,
+  countOfListItems: 5,
 };
 
 export default function reducer(state = initialState, action) {
@@ -55,6 +58,11 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         is_sort_by_cheapest: !state.is_sort_by_cheapest,
+      };
+    case SHOW_ADDITIONAL_CARDS:
+      return {
+        ...state,
+        countOfListItems: state.countOfListItems + 5,
       };
     default:
       break;

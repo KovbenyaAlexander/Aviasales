@@ -6,6 +6,7 @@ import {
   FILTER_TWO_TRANSFER,
   FILTER_THREE_TRANSFER,
   SWITCH_SORT,
+  SHOW_ADDITIONAL_CARDS,
 } from "./actionsTypes";
 
 export function set_data(data) {
@@ -48,5 +49,11 @@ export function filter_three_transfer() {
 export function switch_sort() {
   return {
     type: SWITCH_SORT,
+  };
+}
+
+export function show_additional_cards() {
+  return {
+    type: SHOW_ADDITIONAL_CARDS,
   };
 }

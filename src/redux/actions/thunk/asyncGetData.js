@@ -5,7 +5,6 @@ const asyncGetData = (url) => {
   return (dispatch) => {
     axios.get(url).then((resp) => {
       dispatch(set_data(resp.data));
-      console.log(resp.data);
     });
   };
 };
