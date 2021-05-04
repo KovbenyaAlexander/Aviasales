@@ -16,7 +16,7 @@ function List({ data, show_additional_cards, countOfListItems }) {
   return (
     <div>
       {ticketsArray}
-      <button onClick={show_additional_cards}>Показать ещё 5 билетов</button>
+      <button onClick={show_additional_cards}>Показать ещё 5 билетов!</button>
     </div>
   );
 }

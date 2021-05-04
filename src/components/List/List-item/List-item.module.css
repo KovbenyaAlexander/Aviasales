@@ -1,6 +1,15 @@
 .ListItem {
   width: 500px;
   border: 1px solid black;
-  margin: 5px;
-  padding: 5px;
+  margin-bottom: 50px;
+  padding: 10px;
+}
+
+.destination {
+  color: gray;
+}
+
+.price {
+  color: blue;
+  font-size: 30px;
 }
