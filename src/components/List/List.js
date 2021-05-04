@@ -7,10 +7,11 @@ function List({ data, show_additional_cards, countOfListItems }) {
   if (!data) {
     return <Loader />;
   }
+  console.log(data);
 
-  const ticketsArray = data.tickets.map((ticket, id) => {
+  const ticketsArray = data.map((ticket, id) => {
     if (id < countOfListItems) {
-      return <ListItem key={id} ticket={ticket} />;
+      return <ListItem ticket={ticket} key={ticket.price + ticket.carrier} />;
     }
   });
   return (

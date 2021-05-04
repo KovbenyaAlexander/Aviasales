@@ -9,7 +9,7 @@ const asyncGetData = (url) => {
     axios.get(KEY_URL).then((resp) => {
       const search_id = resp.data.searchId;
       axios.get(`${DATA_URL}${search_id}`).then((resp) => {
-        dispatch(set_data(resp.data));
+        dispatch(set_data(resp.data.tickets));
       });
     });
   };

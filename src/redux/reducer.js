@@ -55,9 +55,24 @@ export default function reducer(state = initialState, action) {
         filter_three_transfer_checked: !state.filter_three_transfer_checked,
       };
     case SWITCH_SORT:
+      const newArr = [...state.data];
+      const is_sort_by_cheapest = state.is_sort_by_cheapest;
+
+      let sortedArr = [];
+      if (is_sort_by_cheapest) {
+        sortedArr = newArr.sort((a, b) => {
+          return a.segments[0].duration - b.segments[0].duration;
+        });
+      } else {
+        sortedArr = newArr.sort((a, b) => {
+          return a.price - b.price;
+        });
+      }
+
       return {
         ...state,
         is_sort_by_cheapest: !state.is_sort_by_cheapest,
+        data: sortedArr,
       };
     case SHOW_ADDITIONAL_CARDS:
       return {

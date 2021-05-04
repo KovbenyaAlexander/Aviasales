@@ -9,7 +9,7 @@ import thunk from "redux-thunk";
 export const store = createStore(reducer, applyMiddleware(thunk));
 
 store.subscribe(() => {
-  console.log(store.getState());
+  // console.log(store.getState());
 });
 
 ReactDOM.render(
