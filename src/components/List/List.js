@@ -24,7 +24,7 @@ function List({ data, show_additional_cards, countOfListItems }) {
 
 const mapStateToProps = (state) => {
   return {
-    data: state.data,
+    data: state.displayedData,
     countOfListItems: state.countOfListItems,
   };
 };
