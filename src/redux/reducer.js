@@ -26,10 +26,15 @@ export default function reducer(state = initialState, action) {
 
   switch (action.type) {
     case SET_DATA:
+      const dataFromApi = action.payload;
+      const sortedDataFromApi = dataFromApi.sort((a, b) => {
+        return a.price - b.price;
+      });
+
       return {
         ...state,
-        data: action.payload,
-        displayedData: action.payload,
+        data: sortedDataFromApi,
+        displayedData: sortedDataFromApi,
       };
 
     case FILTER_ALL:
@@ -95,7 +100,6 @@ export default function reducer(state = initialState, action) {
       };
 
     case FILTER_THREE_TRANSFER:
-      console.log(`THREEE`);
       const three_transfer_data = listFilter(
         state.data,
         state.filter_all_checked,
@@ -104,7 +108,6 @@ export default function reducer(state = initialState, action) {
         state.filter_two_transfer_checked,
         !state.filter_three_transfer_checked
       );
-      console.log(three_transfer_data);
 
       return {
         ...state,
@@ -114,10 +117,12 @@ export default function reducer(state = initialState, action) {
 
     case SWITCH_SORT:
       const newArr = [...state.displayedData];
-      const is_sort_by_cheapest = state.is_sort_by_cheapest;
+      const is_sort_by_cheapest = !state.is_sort_by_cheapest;
 
       let sortedArr = [];
-      if (is_sort_by_cheapest) {
+      console.log(state);
+
+      if (!is_sort_by_cheapest) {
         sortedArr = newArr.sort((a, b) => {
           return a.segments[0].duration - b.segments[0].duration;
         });
@@ -127,9 +132,22 @@ export default function reducer(state = initialState, action) {
         });
       }
 
+      let sortedAlldata = [];
+      const newDataArr = state.data;
+      if (!is_sort_by_cheapest) {
+        sortedAlldata = newDataArr.sort((a, b) => {
+          return a.segments[0].duration - b.segments[0].duration;
+        });
+      } else {
+        sortedAlldata = newDataArr.sort((a, b) => {
+          return a.price - b.price;
+        });
+      }
+
       return {
         ...state,
-        is_sort_by_cheapest: !state.is_sort_by_cheapest,
+        data: sortedAlldata,
+        is_sort_by_cheapest: is_sort_by_cheapest,
         displayedData: sortedArr,
       };
 

@@ -7,7 +7,6 @@ function List({ data, show_additional_cards, countOfListItems }) {
   if (!data) {
     return <Loader />;
   }
-  console.log(data);
 
   const ticketsArray = data.map((ticket, id) => {
     if (id < countOfListItems) {
